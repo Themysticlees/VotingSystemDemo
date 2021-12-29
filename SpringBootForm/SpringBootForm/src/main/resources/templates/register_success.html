@@ -22,7 +22,8 @@
 		<span>Married?</span><span th:text="${user.married}"></span><br/>
 		<span>Note:</span><span th:text="${user.note}"></span><br/>
 		<!--  <img th:src="/{${user.photosImagePath}}" /> -->
-		<img th:src="/{${user.photosImagePath}}" />
+		<img th:src="${user.photosImagePath}" />
+		
 	</div>
 </body>
 </html>

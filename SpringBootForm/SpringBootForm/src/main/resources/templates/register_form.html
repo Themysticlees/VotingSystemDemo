@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>User Registration</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style type="text/css">
 	label {
 		display: inline-block;
@@ -60,13 +61,33 @@
 			<br/>
 			
 			<label>Photos: </label>
-    		<input type="file" name="image" accept="image/png, image/jpeg" /><br/>
+    		<input type="file" name="image" id="fileimage" accept="image/png, image/jpeg" /><br/>
     		
-    		<p> <img id="thumbnail" alt="Logo Preview" src="">
+    		<p> <img id="thumbnail" alt="Logo Preview" src="" height="150px" width="150px">
     		</p>
 			
 			<button type="submit">Register</button>		
 		</form>
 	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#fileimage').change(function(){
+				showImageThumbnail(this);
+			});
+		
+		});
+		
+		function showImageThumbnail(fileInput){
+			file=fileInput.files[0];
+			reader = new FileReader();
+			
+			reader.onload=function(e){
+				$('#thumbnail').attr('src',e.target.result);
+			};
+			reader.readAsDataURL(file);
+		}
+	</script>
 </body>
 </html>
